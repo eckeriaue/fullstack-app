@@ -20,6 +20,8 @@ services:
     depends_on:
       - db
     restart: unless-stopped
+    ports:
+      - '${API_PORT}:5050'
     environment:
       - API_PORT=${API_PORT}
       - API_HOST=${API_HOST}
