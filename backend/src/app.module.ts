@@ -3,12 +3,14 @@ import { ConfigModule, ConfigService } from '@nestjs/config'
 import { TypeOrmModule } from '@nestjs/typeorm'
 import { UsersModule } from './users/users.module'
 import { GraphQLModule } from '@nestjs/graphql'
+import { ApolloDriver } from '@nestjs/apollo'
 
 @Module({
   imports: [
     GraphQLModule.forRoot({
       autoSchemaFile: 'schema.gql',
       sortSchema: true,
+      driver: ApolloDriver
     }),
     ConfigModule.forRoot({
       isGlobal: true,
