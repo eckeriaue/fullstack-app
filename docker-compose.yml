@@ -13,3 +13,12 @@ services:
       - ./pgdata:/var/lib/postgresql/data
     ports:
       - ${TYPEORM_PORT}:${TYPEORM_PORT}
+  backend:
+    container_name: backend-nest
+    build: 
+      context: ./backend
+    depends_on:
+      - db
+    restart: unless-stopped
+    environment:
+      - API_PORT=${API_PORT}
